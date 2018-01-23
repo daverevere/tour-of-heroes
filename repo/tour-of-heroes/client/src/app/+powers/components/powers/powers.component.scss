@@ -1,0 +1,14 @@
+
+:host {
+  mat-list {
+    mat-list-item {
+      .actions {
+        mat-icon {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

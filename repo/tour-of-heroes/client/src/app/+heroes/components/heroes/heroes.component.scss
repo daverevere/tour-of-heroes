@@ -1,0 +1,18 @@
+
+:host {
+  mat-list {
+    mat-list-item {
+      .actions {
+        mat-icon {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .hero-avatar {
+    background-position: center, center;
+  }
+}

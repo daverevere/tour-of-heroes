@@ -1,0 +1,24 @@
+<!--fullscreen directive gives a nice  background overlay over entire screen-->
+<mat-drawer-container (backdropClick)="sidenav.close()" fullscreen>
+  <!--sidenav is a template variable-->
+  <mat-drawer #sidenav (keydown.escape)="sidenav.close('escape')" disableClose>
+    <mat-list>
+      <mat-list-item><button mat-button routerLink="/dashboard" routerLinkActive="active" (click)="sidenav.close()">Dashboard</button></mat-list-item>
+      <mat-list-item><button mat-button routerLink="/heroes" routerLinkActive="active" (click)="sidenav.close()">Heroes</button></mat-list-item>
+      <mat-list-item><button mat-button routerLink="/powers" routerLinkActive="active" (click)="sidenav.close()">Powers</button></mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <mat-icon (click)="sidenav.open()">menu</mat-icon>
+      <span>Tour of Heroes</span>
+    </mat-toolbar>
+    <!--first parameter in fxLayoutALign is horizontal, second is vertical-->
+    <div fxLayout="row" fxLayoutAlign="center stretch">
+      <div fxFlex.xs="90%" fxFlex.sm="80%" fxFlex.md="70%" fxFlex.lg="65%" fxFlex.xl="60%">
+        <!--whatever i put inside the app-layout component will be transcluded(in this case it will replace ng-content)-->
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

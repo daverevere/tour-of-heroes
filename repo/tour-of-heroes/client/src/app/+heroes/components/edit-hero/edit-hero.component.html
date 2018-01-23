@@ -1,0 +1,14 @@
+<mat-card *ngIf="hero">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>Edit {{hero.character.name}}</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <app-power-chip-list
+      [powers]="powers"
+      [hero]="hero"
+      (powerChange)="onPowerChange($event)">
+    </app-power-chip-list>
+  </mat-card-content>
+</mat-card>

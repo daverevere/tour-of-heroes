@@ -1,0 +1,47 @@
+<mat-card *ngIf="hero">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>{{hero.character.name}}</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <div mat-card-image [ngStyle]="{ 'background-image': 'url(' + getHeroImage() + ')'}"></div>
+  <!--<div mat-card-image [ngStyle]="{ 'background-image': 'url(http://localhost:3000/img/dave.jpg'}"></div>-->
+
+  <!--http://localhost:3000/img/spider-man.jpg-->
+  <mat-card-content>
+    <h4> Description</h4>
+    <div *ngIf="hero.character.description; else noDescription">
+      <p>{{hero.character.description}}</p>
+    </div>
+    <ng-template #noDescription>
+      <em>No Description</em>
+    </ng-template>
+
+    <h4>Powers</h4>
+    <div *ngIf="powers; else noPowers">
+      <ul>
+        <!--asterisk denotes that this directive mutates the dom.
+        It is a 'structural' directive. ngFor is going to create elements in the dom.
+        Angular will not allow you to put two structural directives in the dom because then which one takes preference?-->
+        <li *ngFor="let power of powers">
+          {{power.name}}
+        </li>
+      </ul>
+    </div>
+    <ng-template #noPowers>
+      <em>No Powers</em>
+    </ng-template>
+    <h4>Learn More</h4>
+    <ul>
+      <li *ngIf="hasCharacterUrlByType('detail')">
+        <a [href]="getCharacterUrlByType('detail').url" target="_blank">Detail</a>
+      </li>
+      <li *ngIf="hasCharacterUrlByType('wiki')">
+        <a [href]="getCharacterUrlByType('wiki').url" target="_blank">Wiki</a>
+      </li>
+      <li *ngIf="hasCharacterUrlByType('comiclink')">
+        <a [href]="getCharacterUrlByType('comiclink').url" target="_blank">Comics</a>
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>
